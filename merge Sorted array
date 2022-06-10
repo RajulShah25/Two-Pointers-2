@@ -1,0 +1,29 @@
+// time complexity  O(n)
+// space O(1)
+// explanation - 
+// start comparing from the last element in the both the arrays(before 0s in the first array) , store the larger of the 2 elements from the last in nums1 arrary
+// which has extra space. use this zeroes and keep moving the ptr to the left. if nums1 array has the smallest element then it is done. if nums2 has smaller element
+// then we need to copy the remaining elements to nums1 array.
+
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int pt1 = m-1, pt2 = n-1, index = m+n-1;
+        while(pt1 >=0 && pt2 >=0){
+            if(nums1[pt1]< nums2[pt2]){
+                nums1[index] = nums2[pt2];
+                pt2--;
+            }
+            else{
+                nums1[index] = nums1[pt1];
+                pt1--;
+            }
+            index--;
+        }
+        while(pt2>=0){
+            nums1[index] = nums2[pt2];
+            pt2--;
+            index--;
+        }
+        
+    }
+}
