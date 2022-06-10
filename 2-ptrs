@@ -1,0 +1,33 @@
+
+// Time Complexity : O(n)
+// Space Complexity : O(1)
+// Did this code successfully run on Leetcode : yes
+// Three line explanation of solution in plain english
+
+// Comparing the current element with the next element and keeping the count for it. Overwrite the position pointer with the new value as soon as the new value
+// is found at the position. the position pointer always keeps track of the max k duplicate value after which no movement happens for it untill a new value is found.
+//
+// Your code here along with comments explaining your approach
+
+
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int position = 1, k=2, count=1;
+        for(int i=1; i< nums.length; i++){
+            if(nums[i]==nums[i-1]){
+                count++;
+            }
+            else{
+                count=1;
+            }
+            
+            if(count <=k){
+                nums[position] = nums[i];
+                position++;
+            }
+            
+        }
+        return position;
+        
+    }
+}
